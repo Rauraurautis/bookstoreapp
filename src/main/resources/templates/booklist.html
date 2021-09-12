@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Bookstore App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+        <link type="text/css" rel="stylesheet" href="css/styles.css"  th:href="@{css/styles.css}">
+    </head>
+    <body>
+        <div><h1>Books</h1></div>
+        <div>
+            <table class="table table-striped">
+                <tr>
+                    <th>Author</th>
+                    <th>Title</th>
+                    <th>ISBN</th>
+                    <th>Year</th>  
+                    <th>Category</th>
+                </tr>
+                <tr th:each="book : ${books}">
+                    <td th:text="${book.author}"></td>
+                    <td th:text="${book.title}"></td>
+                    <td th:text="${book.isbn}"></td>
+                    <td th:text="${book.year}"></td>
+                    <td th:text="${book.category.name}"></td>
+                    <td><a th:href="@{/deletebook/{id}(id=${book.id})}" class="btn btn-danger">Delete book</a></td>
+                    <td><a th:href="@{/editbook/{id}(id=${book.id})}" class="btn btn-danger" style='background: #fbd804; border: 1px solid #fbd804'>Edit book</a></td>
+                </tr>
+            </table>
+            <div class="btn-container">
+                <a th:href="@{/addbook}" class="btn btn-success">Add Book</a>
+            </div>
+        </div>
+    </body>
+</html>

@@ -22,12 +22,13 @@ public class BookstoreAppKurkoApplication {
     }
 
     @Bean
-    public CommandLineRunner demo(CategoryRepository repository) {
+    public CommandLineRunner demo(CategoryRepository repository, BookRepository bRepository) {
         return (args) -> {
             repository.save(new Category("Fantasy"));
             repository.save(new Category("Horror"));
             repository.save(new Category("Sci-fi"));
             repository.save(new Category("Drama"));
+            bRepository.save(new Book("Test book", "Test Author", 1995, "ISBN", 50));
         };
 
     }
